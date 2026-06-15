@@ -1,12 +1,16 @@
 class Solution {
     public String toLowerCase(String s) {
         int n=s.length();
+        StringBuilder str=new StringBuilder();
         for(int i=0;i<n;i++){
             char ch=s.charAt(i);
-            s=s.replace(ch,Character.toLowerCase(ch));
-        //     if(Character.isUpperCase(ch)){
-        //     }
-         }
-        return s;
+            if(Character.isUpperCase(ch)){
+                str.append(Character.toLowerCase(ch));
+            }
+            else{
+                str.append(ch);
+            }
+        }
+        return str.toString();
     }
 }
