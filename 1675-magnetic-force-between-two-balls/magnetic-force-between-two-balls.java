@@ -3,12 +3,15 @@ class Solution {
         int n=p.length;
         Arrays.sort(p);
         int l=1,r=p[n-1]-p[0];
-            int idx=-1;
+        return binary_search(p,m,l,r);
+    }
+    public int binary_search(int[] p,int m,int l,int r){
+        int idx=-1;
         while(l<=r){
             int mid=(l+r)/2;
             int b=m-1;
             int curr=p[0];
-            for(int i=1;i<n;i++){
+            for(int i=1;i<p.length;i++){
                 int num=p[i]-curr;
                 if(num>=mid){
                     b--;
@@ -25,5 +28,4 @@ class Solution {
         }
         return idx;
     }
-   // return mid;
 }
