@@ -3,7 +3,7 @@ class Solution {
         int row=matrix.length;
         int col=matrix[0].length;
         int i=0,j=col-1;
-        while(i>=0 && i<row && j>=0 && j<col)
+        while(i<row && j>=0)
             if(matrix[i][j]==target){
                 return true;
             }
