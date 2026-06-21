@@ -3,13 +3,7 @@ class Solution {
     static{
         //int[] arr=new int[100001];
         for(int i=0;i<100001;i++){
-            int c=0;
-            int t=i;
-            while(t!=0){
-                c++;
-                t=t-(t&-t);
-            }
-            arr[i]=c;
+           arr[i]=arr[i>>1]+(i&1);
         }
     }
     public int[] countBits(int n) {
