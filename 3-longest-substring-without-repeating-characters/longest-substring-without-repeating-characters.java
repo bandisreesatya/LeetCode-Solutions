@@ -9,7 +9,7 @@ class Solution {
             map.put(ch,1+map.getOrDefault(ch,0));
             if(map.get(ch)>1){
                 while(s.charAt(j)!=ch){
-                    map.put(s.charAt(j),0);
+                    map.put(s.charAt(j),map.get(s.charAt(j))-1);
                     j++;
                 }
                 j++;
