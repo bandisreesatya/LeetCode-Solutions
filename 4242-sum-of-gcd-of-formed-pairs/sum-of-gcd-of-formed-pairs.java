@@ -18,10 +18,6 @@ class Solution {
         for(int i=0;i<n/2;i++){
             sum+=gcd(prefix[i],prefix[n-i-1]);
         }
-        // if(n%2==0){
-        //     return sum;
-        // }
-        // return sum-prefix[n/2];
         return sum;
     }
 }
