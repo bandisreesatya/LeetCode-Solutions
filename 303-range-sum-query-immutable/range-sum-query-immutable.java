@@ -1,18 +1,51 @@
 class NumArray {
-    private int[] prefix;
-    public NumArray(int[] nums) {
-        prefix=new int[nums.length];
-        prefix[0]=nums[0];
-        for(int i=1;i<nums.length;i++){
-            prefix[i]=prefix[i-1]+nums[i];
+    int[] a;
+    int[] st;
+    int n;
+    
+    public NumArray(int[] arr) {
+        this.n=arr.length;
+        this.a=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=arr[i];
         }
+        st=new int[4*n];
+        build_segmentTree(0,0,n-1);
+    }
+    void build_segmentTree(int idx,int ss,int se){
+        if(ss==se){
+            st[idx]=a[ss];
+            return;
+        }
+        int mid=(ss+se)/2;
+        build_segmentTree(2*idx+1,ss,mid);
+        build_segmentTree(2*idx+2,mid+1,se);
+        st[idx]=st[2*idx+1]+st[2*idx+2];
+    }        
+    int rangeSum(int idx,int ss,int se,int qs,int qe){
+        if(se<qs || ss>qe){
+            return 0;
+        }
+        if(ss==qs && se==qe){
+            return st[idx];
+        }
+        if(ss>=qs && se<=qe){
+            return st[idx];
+        }
+        int mid=(se+ss)/2;
+        int left=rangeSum(2*idx+1,ss,mid,qs,qe);
+        int right=rangeSum(2*idx+2,mid+1,se,qs,qe);
+        return left+right;
+        
     }
     
     public int sumRange(int left, int right) {
-       if(left>0) return prefix[right]-prefix[left-1];
-       return prefix[right];
+        return rangeSum(0,0,n-1,left,right);
     }
 }
+
+
+
 
 /**
  * Your NumArray object will be instantiated and called as such:
