@@ -1,9 +1,18 @@
 class NumArray {
+    SegmentTree st;
+    public NumArray(int[] nums) {
+       st=new SegmentTree(nums);
+    }
+    
+    public int sumRange(int left, int right) {
+        return st.rangeSum(0,0,st.n-1,left,right);
+    }
+}
+class SegmentTree{
     int[] a;
     int[] st;
     int n;
-    
-    public NumArray(int[] arr) {
+    public SegmentTree(int[] arr){
         this.n=arr.length;
         this.a=new int[n];
         for(int i=0;i<n;i++){
@@ -21,9 +30,9 @@ class NumArray {
         build_segmentTree(2*idx+1,ss,mid);
         build_segmentTree(2*idx+2,mid+1,se);
         st[idx]=st[2*idx+1]+st[2*idx+2];
-    }        
+    }
     int rangeSum(int idx,int ss,int se,int qs,int qe){
-        if(se<qs || ss>qe){
+         if(se<qs || ss>qe){
             return 0;
         }
         if(ss==qs && se==qe){
@@ -36,16 +45,8 @@ class NumArray {
         int left=rangeSum(2*idx+1,ss,mid,qs,qe);
         int right=rangeSum(2*idx+2,mid+1,se,qs,qe);
         return left+right;
-        
     }
-    
-    public int sumRange(int left, int right) {
-        return rangeSum(0,0,n-1,left,right);
     }
-}
-
-
-
 
 /**
  * Your NumArray object will be instantiated and called as such:
