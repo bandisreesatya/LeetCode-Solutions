@@ -29,7 +29,7 @@ class Solution {
         }
         int count = 0;
         int min = Integer.MAX_VALUE;
-        int idx = Integer.MAX_VALUE;
+        int idx = -1;
         for (int i = 0; i < n; i++){
             count = 0;
             for (int j = 0; j < n; j++){
@@ -37,7 +37,7 @@ class Solution {
                     count++;
                 }
             }
-            if (count <= min ){
+            if (count <= min){
                 min=count;
                 idx = i;
             }
