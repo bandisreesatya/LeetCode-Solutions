@@ -10,4 +10,4 @@ FROM Employees AS e
 RIGHT JOIN Salaries AS s
 ON e.employee_id = s.employee_id
 WHERE e.name IS NULL 
-ORDER BY employee_id
+ORDER BY employee_id # ORDER BY 1
