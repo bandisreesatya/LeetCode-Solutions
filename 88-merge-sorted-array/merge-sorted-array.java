@@ -5,16 +5,17 @@ class Solution {
         int k = 0;
 
         while (i < m && j < n){
+
             if (nums1[i] < nums2[j]){
                 res[k] = nums1[i];
-                k++;
                 i++;
             }
             else{
                 res[k] = nums2[j];
-                k++;
                 j++;
             }
+            k++;
+            
         }
 
         while(i < m){
